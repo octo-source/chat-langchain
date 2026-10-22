@@ -8,6 +8,11 @@ Deployed version: [chat.langchain.com](https://chat.langchain.com)
 The app leverages LangChain's streaming support and async API to update the page in real time for multiple users.
 
 ## ✅ Running locally
+
+The frontend requires Node.js 22.23.4 or newer in the 22.x line, or 24.22.1 or newer in the 24.x line and Yarn 1.22.19.
+Use `yarn install --frozen-lockfile` and `yarn test:security` in `chat-langchain` to verify the image runtime after installation.
+Keep optional dependencies enabled: Sharp uses platform-specific native packages.
+
 1. Install backend dependencies: `poetry install`.
 1. Make sure to enter your environment variables to configure the application:
 ```

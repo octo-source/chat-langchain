@@ -1,0 +1,24 @@
+name: Frontend security runtime
+on:
+  pull_request:
+  push:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: chat-langchain
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: chat-langchain/.nvmrc
+      - run: corepack enable
+      - run: corepack yarn install --frozen-lockfile --ignore-scripts
+      - run: corepack yarn test:security
+      - run: corepack yarn tsc --noEmit
